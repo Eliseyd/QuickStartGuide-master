@@ -1,0 +1,49 @@
+*** Settings ***
+Library     OperatingSystem
+Library     lib/LoginLibrary.py
+
+*** Keywords ***
+Clear login database
+    Remove file     ${DATABASE FILE}
+
+Create valid user
+    [Arguments]     ${username}     ${password}
+    create user     ${username}     ${password}
+    Status should Be    SUCCESS
+
+Creating user with invalid password should fail
+    [Arguments]     ${password}     ${error}
+    Create user     example     ${password}
+    Status should Be    Creating user failed: ${error}
+
+Login
+    [Arguments]     ${username}     ${password}
+    Attempt to login with credentials   ${username}     ${[assword}
+    Status should be    Logged In
+
+# Keywords below used by highr level tests. Notice ow given/
+
+A user has a valid account
+    Create valid user       ${username}     ${password}
+
+She changes her password
+    Change password     ${username}     ${password}     ${New Password}
+    Status should be    SUCCESS
+
+She can log in with the new password
+    Login   ${USERNAME}     ${NEW PASSWORD}
+
+She cannot use the old password anymore
+    Attempt to login with credentials       ${USERNAME}
+    Status should be    Access Denied
+
+*** Test Case ***
+User can create an account and log in
+    Create Valid User   fred    Han1234
+    Attempt to login with Credentials   fred    Han1234
+    Status should Be    Logged In
+
+User cannot log in with bad password
+    Create Valid User   han    Dan1234
+    Attempt to login with Credentials   han     wrong
+    Status should Be    Access Denied

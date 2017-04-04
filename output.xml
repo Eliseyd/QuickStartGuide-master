@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170211 00:04:01.504" generator="Robot 3.0.1 (Python 2.7.11 on darwin)">
+<suite source="/Users/king/PycharmProjects/test engineer/QuickStartGuide-master/TC.txt" id="s1" name="TC">
+<test id="s1-t1" name="User can create an account and log in">
+<kw name="Create valid user">
+<arguments>
+<arg>fred</arg>
+<arg>Han1234</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170211 00:04:01.647" level="INFO">['/usr/local/opt/python/bin/python2.7', '/Users/king/PycharmProjects/test engineer/QuickStartGuide-master/lib/../sut/login.py', 'create', u'fred', u'Han1234']</msg>
+<status status="PASS" endtime="20170211 00:04:01.648" starttime="20170211 00:04:01.571"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>SUCCESS</arg>
+</arguments>
+<status status="PASS" endtime="20170211 00:04:01.649" starttime="20170211 00:04:01.648"></status>
+</kw>
+<status status="PASS" endtime="20170211 00:04:01.649" starttime="20170211 00:04:01.571"></status>
+</kw>
+<kw name="Attempt To Login With Credentials" library="LoginLibrary">
+<arguments>
+<arg>fred</arg>
+<arg>Han1234</arg>
+</arguments>
+<msg timestamp="20170211 00:04:01.700" level="INFO">['/usr/local/opt/python/bin/python2.7', '/Users/king/PycharmProjects/test engineer/QuickStartGuide-master/lib/../sut/login.py', 'login', u'fred', u'Han1234']</msg>
+<status status="PASS" endtime="20170211 00:04:01.700" starttime="20170211 00:04:01.649"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Logged In</arg>
+</arguments>
+<status status="PASS" endtime="20170211 00:04:01.701" starttime="20170211 00:04:01.701"></status>
+</kw>
+<status status="PASS" endtime="20170211 00:04:01.701" critical="yes" starttime="20170211 00:04:01.570"></status>
+</test>
+<test id="s1-t2" name="User cannot log in with bad password">
+<kw name="Create valid user">
+<arguments>
+<arg>han</arg>
+<arg>Dan1234</arg>
+</arguments>
+<kw name="Create User" library="LoginLibrary">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170211 00:04:01.761" level="INFO">['/usr/local/opt/python/bin/python2.7', '/Users/king/PycharmProjects/test engineer/QuickStartGuide-master/lib/../sut/login.py', 'create', u'han', u'Dan1234']</msg>
+<status status="PASS" endtime="20170211 00:04:01.762" starttime="20170211 00:04:01.703"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>SUCCESS</arg>
+</arguments>
+<status status="PASS" endtime="20170211 00:04:01.763" starttime="20170211 00:04:01.762"></status>
+</kw>
+<status status="PASS" endtime="20170211 00:04:01.763" starttime="20170211 00:04:01.703"></status>
+</kw>
+<kw name="Attempt To Login With Credentials" library="LoginLibrary">
+<arguments>
+<arg>han</arg>
+<arg>wrong</arg>
+</arguments>
+<msg timestamp="20170211 00:04:01.813" level="INFO">['/usr/local/opt/python/bin/python2.7', '/Users/king/PycharmProjects/test engineer/QuickStartGuide-master/lib/../sut/login.py', 'login', u'han', u'wrong']</msg>
+<status status="PASS" endtime="20170211 00:04:01.813" starttime="20170211 00:04:01.763"></status>
+</kw>
+<kw name="Status Should Be" library="LoginLibrary">
+<arguments>
+<arg>Access Denied</arg>
+</arguments>
+<status status="PASS" endtime="20170211 00:04:01.814" starttime="20170211 00:04:01.814"></status>
+</kw>
+<status status="PASS" endtime="20170211 00:04:01.814" critical="yes" starttime="20170211 00:04:01.702"></status>
+</test>
+<status status="PASS" endtime="20170211 00:04:01.815" starttime="20170211 00:04:01.508"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="TC" pass="2">TC</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
